@@ -25,7 +25,9 @@ data class Row(val cells: List<Cell>) {
     val difference: Int
         get() = (cells.first().value - cells.last().value).absoluteValue
     val division: Int
-        get() = permutations().filter { (a, b) -> a.value.rem(b.value) == 0 }.first().run { first.value / second.value }
+        get() = permutations()
+                .first { (a, b) -> a.value.rem(b.value) == 0 }
+                .run { first.value / second.value }
 }
 
 data class Cell(val value: Int)
