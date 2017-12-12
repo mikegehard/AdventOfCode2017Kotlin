@@ -94,7 +94,7 @@ class Day2ChecksumTest {
 7 5 3
 2 4 6 8
 """)
-        Assertions.assertEquals(18, spreadsheet.differenceChecksum)
+        Assertions.assertEquals(18, spreadsheet.checksum(Row::difference))
     }
 
     @Test
@@ -104,7 +104,7 @@ class Day2ChecksumTest {
 9 4 7 3
 3 8 6 5
 """)
-        Assertions.assertEquals(9, spreadsheet.divisionChecksum)
+        Assertions.assertEquals(9, spreadsheet.checksum(Row::division))
     }
 
     @Test
@@ -127,7 +127,7 @@ class Day2ChecksumTest {
 1165 1251 702 282 1178 834 211 1298 382 1339 67 914 1273 76 81 71
 6151 5857 4865 437 6210 237 37 410 544 214 233 6532 2114 207 5643 6852
 """
-        Assertions.assertEquals(37923, Spreadsheet.from(input).differenceChecksum)
+        Assertions.assertEquals(37923, Spreadsheet.from(input).checksum(Row::difference))
     }
 
     @Test
@@ -151,6 +151,6 @@ class Day2ChecksumTest {
 6151 5857 4865 437 6210 237 37 410 544 214 233 6532 2114 207 5643 6852
 """
 
-        Assertions.assertEquals(263, Spreadsheet.from(input).divisionChecksum)
+        Assertions.assertEquals(263, Spreadsheet.from(input).checksum(Row::division))
     }
 }

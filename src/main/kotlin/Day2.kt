@@ -9,10 +9,7 @@ data class Spreadsheet(private val rows: List<Row>) {
         )
     }
 
-    val differenceChecksum: Int
-        get() = rows.map { it.difference }.sum()
-    val divisionChecksum: Int
-        get() = rows.map { it.division }.sum()
+    fun checksum(rowCalculation: (Row) -> Int) = rows.map(rowCalculation).sum()
 }
 
 data class Row(val cells: List<Cell>) {
