@@ -10,7 +10,7 @@ data class Spreadsheet(private val rows: List<Row>) {
     }
 
     val differenceChecksum: Int
-        get() = rows.map { it.difference.absoluteValue }.sum()
+        get() = rows.map { it.difference }.sum()
     val divisionChecksum: Int
         get() = rows.map { it.division }.sum()
 }
@@ -26,7 +26,7 @@ data class Row(val cells: List<Cell>) {
     }
 
     val difference: Int
-        get() = cells.first().value - cells.last().value
+        get() = (cells.first().value - cells.last().value).absoluteValue
     val division: Int
         get() = permutations().filter { (a, b) -> a.value.rem(b.value) == 0 }.first().run { first.value / second.value }
 }
